@@ -136,7 +136,14 @@ footer {
     }
 
     .navbar-collapse {
-        flex-direction: column;
+        width: 100%;
+        flex-direction: row;
+    }
+
+    .navbar-nav {
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
     }
 
     .date-container {
