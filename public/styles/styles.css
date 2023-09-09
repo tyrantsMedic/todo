@@ -118,7 +118,7 @@ label {
     margin-left: 10px;
     margin-right: 20px;
     border-bottom: 2px solid #AFC1D0;
-    flex-grow: 1; /* Allow label text to grow within the container */
+    flex-grow: 1;
 }
 
 input[type="checkbox"]:checked + label {
@@ -172,8 +172,7 @@ footer {
     }
 
     #inputPreview {
-        width: 95%;
-        margin-right: auto;
+        width: 97%;
     }
 
     .checkbox-container {
@@ -184,4 +183,25 @@ footer {
     label {
         width: 100%;
     }
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #333;
+    border-radius: 5px;
+}
+
+/* ::-webkit-scrollbar-track {
+    background-color: #ddd;
+} */
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+}
+
+::-webkit-scrollbar-thumb:active {
+    background-color: #777;
 }
