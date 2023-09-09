@@ -1,6 +1,9 @@
 import express from "express";
 import bodyParser from "body-parser";
+import { dirname } from "path";
+import { fileURLToPath } from "url";
 
+const __dirname = dirname(fileURLToPath(import.meta.url));
 const app = express();
 const port = 3000;
 
@@ -48,7 +51,7 @@ function sendDailyTasks(req, res) {
         workTodo = [];
         currentDate = date.getDate();
     }
-    res.render("index.ejs", {
+    res.render(__dirname + "/views/index.ejs", {
         currentDate: date.getDate(),
         currentDay: days[date.getDay()],
         currentMonth: months[date.getMonth()],
@@ -63,7 +66,7 @@ function sendWorkTasks(req, res) {
         workTodo = [];
         currentDate = date.getDate();
     }
-    res.render("index.ejs", {
+    res.render(__dirname + "/views/index.ejs", {
         workTodo: workTodo
     });
 }
