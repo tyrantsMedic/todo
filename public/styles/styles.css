@@ -146,6 +146,7 @@ footer {
 
     .todo-container {
         width: 95%;
+        height: 100%;
     }
 
     .todo-contents {
