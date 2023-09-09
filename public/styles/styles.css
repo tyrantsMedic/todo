@@ -7,6 +7,7 @@ body {
     font-family: "Open Sans", sans-serif;
     margin: 0px;
     padding: 0px;
+    flex: 1;
 }
 
 .navbar-collapse {
@@ -127,4 +128,60 @@ input[type="checkbox"]:checked + label {
 footer {
     color: rgb(247, 247, 247);
     font-size: 20px;
+}
+
+@media (max-width: 600px) {
+    body {
+        height: 100%;
+    }
+
+    .navbar-collapse {
+        flex-direction: column;
+    }
+
+    .date-container {
+        width: 95%;
+        height: 20%;
+    }
+
+    .todo-container {
+        width: 95%;
+    }
+
+    .todo-contents {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    form {
+        margin-bottom: auto;
+        width: 100%;
+    }
+
+    .add-todo-text {
+        width: 70%;
+        height: 80%;
+    }
+
+    .add-todo-btn {
+        position: static;
+        width: 60px;
+        height: 60px;
+    }
+
+    #inputPreview {
+        width: 95%;
+        margin-right: auto;
+    }
+
+    .checkbox-container {
+        font-size: 20px;
+        width: 100%;
+    }
+
+    label {
+        width: 100%;
+    }
 }

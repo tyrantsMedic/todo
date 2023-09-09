@@ -2,7 +2,11 @@
 
 <main>
     <div class="date-container d-flex align-items-center justify-content-center mb-3">
-        <h1 class="date-work-header">Friday, Sep 8</h1>     
+        <% if(locals.workTodo) { %>
+            <h1 class="date-work-header">Work List</h1>
+        <% } else { %>
+            <h1 class="date-work-header"><%= currentDay %>, <%= currentMonth %> <%= currentDate %></h1>
+            <% } %>
     </div>
     <div class="todo-container">
         <div class="todo-contents mt-3">
@@ -12,12 +16,21 @@
             </form>
         </div>
             <div id="inputPreview">
-                <% for (let i=0; i < 20; i++) { %>
-                <div class="checkbox-container">
-                    <input type="checkbox" id="checkbox-0">
-                    <label for="checkbox-0">Drink Water</label>
-                </div>
-                <% } %>
+                <% if(locals.workTodo) {
+                    for (let i=0; i < workTodo.length; i++) { %>
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="checkbox-<%= i %>">
+                        <label for="checkbox-<%= i %>"><%= workTodo[i] %></label>
+                    </div>
+                <% }
+             } else { %>
+                    <% for (let i=0; i < todayTodo.length; i++) { %>
+                        <div class="checkbox-container">
+                            <input type="checkbox" id="checkbox-<%= i %>">
+                            <label for="checkbox-<%= i %>"><%= todayTodo[i] %></label>
+                        </div>
+                        <% }
+                     }%>
             </div>
     </div>
 </main>

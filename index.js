@@ -9,11 +9,61 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
-app.use("/", (req, res) => {
-    res.render("index.ejs");
+let dailyTodo = [];
+let workTodo = [];
+const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+let date = new Date();
+let currentDate = date.getDate();
+let URL;
+
+app.get("/", (req, res) => {
+    sendDailyTasks(req, res);
+});
+
+app.get("/work", (req, res) => {
+    sendWorkTasks(req, res);
+});
+
+app.post("/add", (req, res, next) => {
+    if(URL === "/") {
+        dailyTodo.push(req.body.addTodo);
+        next();
+        res.redirect("/");
+    } else if(URL === "/work") {
+        workTodo.push(req.body.addTodo);
+        next();
+        res.redirect("/work");
+    }
 })
 
 app.listen(port, () => {
     console.log(`listening on ${port}`);
 });
 
+function sendDailyTasks(req, res) {
+    URL = req.url;
+    if(currentDate != date.getDate()) {
+        dailyTodo = [];
+        workTodo = [];
+        currentDate = date.getDate();
+    }
+    res.render("index.ejs", {
+        currentDate: date.getDate(),
+        currentDay: days[date.getDay()],
+        currentMonth: months[date.getMonth()],
+        todayTodo: dailyTodo
+    });
+}
+
+function sendWorkTasks(req, res) {
+    URL = req.url;
+    if(currentDate != date.getDate()) {
+        dailyTodo = [];
+        workTodo = [];
+        currentDate = date.getDate();
+    }
+    res.render("index.ejs", {
+        workTodo: workTodo
+    });
+}
