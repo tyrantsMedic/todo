@@ -54,9 +54,10 @@ main {
 }
 
 .todo-contents {
-    width: 500px;
-    height: 90px;
+    width: 495px;
+    height: 110px;
     position: relative;
+    margin-top: 15px;
 }
 
 .add-todo-text {
@@ -102,7 +103,6 @@ main {
 .checkbox-container {
     display: flex;
     margin: 10px;
-    margin-top: 0;
     font-size: 25px;
     width: 100%;
 }
@@ -163,7 +163,7 @@ footer {
     }
 
     form {
-        margin-bottom: auto;
+        margin-bottom: 0;
         width: 100%;
     }
 
