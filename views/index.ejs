@@ -35,4 +35,30 @@
     </div>
 </main>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $("form").submit(function(e) {
+            e.preventDefault();
+
+            var formData = {
+                addTodo: $("input[name='addTodo']").val()
+            };
+
+            var url = window.location.pathname;
+
+            $.ajax({
+                type: "POST",
+                url: "/add",
+                data: formData,
+                success: function(data) {
+                    $("#inputPreview").html(data);
+                    $("input[name='addTodo']").val("");
+                }
+            });
+        });
+    });
+</script>
+
+
 <%- include("partials/footer.ejs") %>
